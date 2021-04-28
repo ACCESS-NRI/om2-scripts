@@ -18,7 +18,7 @@ qairfile = os.path.join(JRAin,'RYF.huss.' + RYFyrs + '.nc')
 slpfile = os.path.join(JRAin,'RYF.psl.' + RYFyrs + '.nc')
 
 # Output directory and file
-JRAout = JRAin
+JRAout = '/g/data/e14/rmh561/access-om2/input/JRA-55/RYF/v1-4/'
 rairfile = os.path.join(JRAout,'RYF.rhuss.' + RYFyrs + '.nc')
 
 # Load input fields
