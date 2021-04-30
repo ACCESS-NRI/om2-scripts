@@ -32,6 +32,7 @@ rair_ds["rhuss"].attrs["standard_name"] = "relative_humidity"
 rair_ds["rhuss"].attrs["long_name"] = "Near-Surface Relative Humidity"
 rair_ds["rhuss"].attrs["comment"] = "Near-surface (usually, 2 meter) relative humidity"
 rair_ds["rhuss"].attrs["units"] = "percent"
+rair_ds.attrs["comment"] = 'Created from JRA55-do input by https://github.com/COSIMA/make_rhuss"
 
 # Note: The below calculation mirrors that performed in the code to
 # convert the relative humidity back to specific humidity.
