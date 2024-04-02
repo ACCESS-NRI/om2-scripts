@@ -8,6 +8,8 @@
 #
 # This script uses "ncrcat". Load this through either 'module use /g/data/vk83/modules; module load payu' or 'module load nco'.
 
+shopt -s extglob
+
 Help()
 {
    # Display Help
@@ -41,15 +43,15 @@ done
 #If no directory option provided , then use latest
 if [ -z $out_dir ]; then 
     #latest output dir only
-    out_dir=$(ls -drv archive/output??? | head -1)/ice/OUTPUT 
+    out_dir=$(ls -drv archive/output*([0-9]) | head -1)/ice/OUTPUT 
 fi
 
 for f in $out_dir/iceh.????-??-01.nc; do
     #concat daily files for this month
     echo doing ncrcat -O -L 5 -4 ${f/-01.nc/-??.nc} ${f/-01.nc/-daily.nc}
-    {PAYU_PATH}/ncrcat -O -L 5 -4 ${f/-01.nc/-??.nc} ${f/-01.nc/-daily.nc} 
+    ncrcat -O -L 5 -4 ${f/-01.nc/-??.nc} ${f/-01.nc/-daily.nc} 
     
     if [[ $? == 0 ]]; then 
-        rm ${f/-01.nc/-??.nc} #delete indidual dailys on success
+        rm ${f/-01.nc/-??.nc} #delete individual dailys on success
     fi
 done
